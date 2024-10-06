@@ -1,4 +1,3 @@
-// src/components/styles.js
 export const styles = {
     header: {
         display: 'flex',
@@ -10,8 +9,8 @@ export const styles = {
         position: 'fixed',
         top: 0,
         zIndex: 1000,
-        margin: '0 10px', // Margem nas laterais
-        marginBottom: '20px', // Margem inferior do cabeçalho
+        margin: '0 10px', 
+        marginBottom: '20px', 
     },
     backButtonContainer: {
         alignSelf: 'flex-start',
@@ -58,17 +57,17 @@ export const styles = {
     },
     button: {
         marginLeft: '10px',
-        padding: '10px 20px', // Aumentando o tamanho dos botões
+        padding: '10px 20px', 
         cursor: 'pointer',
         backgroundColor: '#007BFF',
         color: 'white',
         border: 'none',
-        borderRadius: '8px', // Bordas arredondadas
-        transition: 'background-color 0.3s, transform 0.3s', // Transição suave para o hover
-        fontSize: '16px', // Tamanho da fonte maior
+        borderRadius: '8px', 
+        transition: 'background-color 0.3s, transform 0.3s', 
+        fontSize: '16px', 
     },
     buttonHover: {
-        backgroundColor: '#0056b3', // Cor de fundo ao passar o mouse
-        transform: 'scale(1.05)', // Efeito de aumento ao passar o mouse
+        backgroundColor: '#0056b3',
+        transform: 'scale(1.05)', 
     },
 };

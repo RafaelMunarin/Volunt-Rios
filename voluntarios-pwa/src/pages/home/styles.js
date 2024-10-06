@@ -1,33 +1,32 @@
-// src/pages/styles.js
 export const styles = {
     container: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center', // Centraliza verticalmente
-        minHeight: '100vh', // Faz o container ocupar toda a altura da tela
+        justifyContent: 'center', 
+        minHeight: '100vh', 
         padding: '20px',
         backgroundColor: '#e0f7fa',
     },
     title: {
-        fontSize: '2.5rem', // Aumenta o tamanho do título
-        color: '#007BFF', // Cor do título para se alinhar com as outras telas
-        marginBottom: '20px', // Espaçamento abaixo do título
+        fontSize: '2.5rem', 
+        color: '#007BFF', 
+        marginBottom: '20px', 
     },
     description: {
         fontSize: '1.2rem',
         color: '#004d40',
         textAlign: 'center',
         margin: '10px 0',
-        maxWidth: '600px', // Limita a largura do texto para melhor legibilidade
+        maxWidth: '600px', 
     },
     buttonContainer: {
         marginTop: '20px',
-        display: 'flex', // Flex para os botões ficarem alinhados
-        justifyContent: 'center', // Centraliza os botões
+        display: 'flex',
+        justifyContent: 'center', 
     },
     button: {
-        backgroundColor: '#007BFF', // Altera a cor do botão para se alinhar com as outras telas
+        backgroundColor: '#007BFF', 
         color: 'white',
         padding: '10px 20px',
         border: 'none',
@@ -35,9 +34,9 @@ export const styles = {
         cursor: 'pointer',
         margin: '0 10px',
         textDecoration: 'none',
-        transition: 'background-color 0.3s', // Transição suave ao passar o mouse
+        transition: 'background-color 0.3s', 
     },
     buttonHover: {
-        backgroundColor: '#0056b3', // Cor do botão ao passar o mouse
+        backgroundColor: '#0056b3', 
     },
 };

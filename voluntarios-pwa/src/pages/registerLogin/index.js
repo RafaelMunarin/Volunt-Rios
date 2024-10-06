@@ -1,4 +1,3 @@
-// src/pages/RegisterLogin.js
 import React, { useState } from 'react';
 import { styles } from './styles';
 import axios from 'axios';
@@ -20,19 +19,18 @@ const RegisterLogin = () => {
         try {
             const response = await axios.post(endpoint, formData);
             console.log('Dados do usuário:', response.data.user);
-            localStorage.setItem('username', response.data.user.nome); // Armazena o nome no localStorage
-            navigate('/expeditions'); // Redireciona para a tela de expedições
+            localStorage.setItem('username', response.data.user.nome); 
+            navigate('/expeditions'); 
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Erro ao processar a solicitação. Tente novamente.';
-            alert(errorMessage); // O front-end exibe a mensagem
+            alert(errorMessage); 
         }
     };
 
     const handleFormTypeChange = () => {
-        // Limpa os campos ao alternar entre registro e login
         setFormType((prevType) => {
             const newType = prevType === 'register' ? 'login' : 'register';
-            setFormData({ nome: '', email: '', senha: '' }); // Limpa os campos
+            setFormData({ nome: '', email: '', senha: '' }); 
             return newType;
         });
     };

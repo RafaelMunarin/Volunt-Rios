@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../components/header'; // Ajustado para a nova estrutura
+import Header from '../../components/header'; 
 import { styles } from './styles';
 
 const Expeditions = () => {
     return (
-        <div style={{ ...styles.container, marginTop: '80px' }}> {/* Adicionando margem superior */}
+        <div style={{ ...styles.container, marginTop: '80px' }}> 
             <Header />
             <h2 style={styles.title}>Expedições Disponíveis</h2>
             <ul style={styles.list}>

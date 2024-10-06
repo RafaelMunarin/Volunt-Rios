@@ -1,13 +1,12 @@
-// src/components/Header.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Ícone de seta para a esquerda
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'; 
 import { styles } from './styles';
 
 const Header = () => {
     const navigate = useNavigate();
-    const username = localStorage.getItem('username'); // Recupera o nome do usuário
+    const username = localStorage.getItem('username'); 
 
     const handleBack = () => {
         navigate(-1);
