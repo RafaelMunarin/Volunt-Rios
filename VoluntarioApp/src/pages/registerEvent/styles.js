@@ -3,47 +3,41 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-        backgroundColor: '#e0f7fa',
+        padding: 16,
     },
     form: {
         width: '100%',
-        maxWidth: 400,
+        maxWidth: 400, // Definindo uma largura máxima para os campos de input
+        alignSelf: 'center', // Centralizando o formulário na tela
     },
     input: {
-        backgroundColor: '#fff',
         padding: 10,
         marginVertical: 10,
         borderRadius: 4,
-        borderColor: '#ccc',
-        borderWidth: 1,
         fontSize: 16,
-        height: 40, 
+        height: 40,
+        width: '100%', // Garantir que os inputs ocupem a largura total do container
     },
     picker: {
         height: 40,
         marginVertical: 10,
         borderWidth: 1,
-        borderColor: '#ccc',
         borderRadius: 4,
-        backgroundColor: '#fff',
+        width: '100%',
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginVertical: 10,
+        marginVertical: 20, // Adicionando mais espaçamento entre os campos e os botões
     },
     button: {
-        backgroundColor: '#004d40',
-        paddingVertical: 10,
+        paddingVertical: 12,
         paddingHorizontal: 20,
         borderRadius: 4,
         alignItems: 'center',
         marginVertical: 10,
         flex: 1,
-        marginHorizontal: 5,
+        marginHorizontal: 5, // Espaçamento entre os botões
     },
     buttonText: {
         color: 'white',
@@ -56,14 +50,18 @@ const styles = StyleSheet.create({
     },
     inputHalf: {
         flex: 1,
-        backgroundColor: '#fff',
         padding: 10,
-        marginRight: 10,
         borderRadius: 4,
-        borderColor: '#ccc',
-        borderWidth: 1,
         fontSize: 16,
         height: 40, 
+    },
+    inputHalfLast: {
+        flex: 1,
+        padding: 10,
+        marginLeft: 10,
+        borderRadius: 4,
+        fontSize: 16,
+        height: 40,
     },
     buttonSearch: {
         width: 40,
@@ -71,14 +69,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
-        backgroundColor: '#004d40',
+        backgroundColor: '#004d40', 
         marginRight: 10,
-    },
-    label: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginBottom: 5,
-        marginTop: 10,
+        marginLeft: 10,
     },
 });
 

@@ -7,7 +7,8 @@ const register = require('./routes/register');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
 const event = require('./routes/event');
-const { dataBaseSetup } = require('./util/databaseSetup');
+const user = require('./routes/user'); 
+const { dataBaseSetup } = require('./util/dataBaseSetup');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,7 +25,7 @@ app.use('/api', register)
 app.use('/api', login)
 app.use('/api', logout)
 app.use('/api', event)
-
+app.use('/api', user)  
 
 // Conexão com o banco de dados
 const sequelize = new Sequelize(

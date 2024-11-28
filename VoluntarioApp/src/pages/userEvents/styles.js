@@ -1,42 +1,40 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 16,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 16,
+        paddingHorizontal: 16,
+        paddingVertical: 8,
     },
     card: {
-        padding: 16,
         borderRadius: 8,
-        elevation: 2, // Para sombra no Android
-        marginBottom: 12,
+        padding: 16,
+        marginVertical: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 4,
     },
     cardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
+        marginBottom: 8,
     },
     cardDescription: {
         fontSize: 14,
-        color: '#666',
+        marginBottom: 8,
     },
     cardInfo: {
         fontSize: 12,
-        color: '#666',
+        marginBottom: 4,
     },
     cardLocation: {
         fontSize: 12,
-        color: '#666',
     },
     emptyText: {
         fontSize: 16,
         textAlign: 'center',
         marginTop: 20,
-    }
+    },
 });
-
-export default styles;

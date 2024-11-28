@@ -1,5 +1,5 @@
 const express = require('express');
-const pool = require('../db'); // Certifique-se de que está apontando para sua configuração de banco de dados
+const pool = require('../db'); 
 const { errorResponse, successResponse } = require('../models/jsonReturn');
 
 const router = express.Router();
@@ -74,6 +74,98 @@ router.get('/search-event', async (req, res) => {
     } catch (err) {
         console.error('Erro ao buscar eventos:', err);
         return res.status(500).json(errorResponse('Erro ao buscar eventos'));
+    }
+});
+
+router.post('/apply-event', async (req, res) => {
+    const { usuarioId, eventoId } = req.body;
+
+    // Validação dos campos obrigatórios
+    if (!usuarioId || !eventoId) {
+        return res.json(errorResponse('Os campos usuarioId e eventoId são obrigatórios.'));
+    }
+
+    try {
+        // Verificar se o usuário já está cadastrado no evento
+        const existingCandidacy = await pool.query(
+            'SELECT * FROM candidaturas WHERE usuario_id = $1 AND evento_id = $2',
+            [usuarioId, eventoId]
+        );
+
+        if (existingCandidacy.rows.length > 0) {
+            return res.json(errorResponse('Você já se candidatou para este evento.'));
+        }
+
+        const result = await pool.query(
+            'INSERT INTO candidaturas (usuario_id, evento_id) VALUES ($1, $2) RETURNING *',
+            [usuarioId, eventoId]
+        );
+
+        return res.json(successResponse({ candidatura: result.rows[0] }));
+    } catch (error) {
+        console.error('Erro ao processar candidatura:', error);
+        return res.status(500).json(errorResponse('Erro ao processar a candidatura.'));
+    }
+});
+
+// Rota para buscar eventos nos quais o usuário está cadastrado
+router.get('/user-events/:usuarioId', async (req, res) => {
+    const { usuarioId } = req.params;
+
+    if (!usuarioId) {
+        return res.json(errorResponse('O campo usuarioId é obrigatório.'));
+    }
+
+    try {
+        const result = await pool.query(
+            `SELECT e.*
+             FROM eventos e
+             INNER JOIN candidaturas c ON e.id = c.evento_id
+             WHERE c.usuario_id = $1
+             ORDER BY e.data ASC`,
+            [usuarioId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.json(successResponse([], 'Nenhum evento encontrado.'));
+        }
+
+        return res.json(successResponse(result.rows));
+    } catch (error) {
+        console.error('Erro ao buscar eventos do usuário:', error);
+        return res.status(500).json(errorResponse('Erro ao buscar eventos do usuário.'));
+    }
+});
+
+// Rota para cancelar candidatura
+router.delete('/cancel-candidacy', async (req, res) => {
+    const { usuarioId, eventoId } = req.body;
+
+    if (!usuarioId || !eventoId) {
+        return res.json(errorResponse('Os campos usuarioId e eventoId são obrigatórios.'));
+    }
+
+    try {
+        // Verificar se a candidatura existe
+        const existingCandidacy = await pool.query(
+            'SELECT * FROM candidaturas WHERE usuario_id = $1 AND evento_id = $2',
+            [usuarioId, eventoId]
+        );
+
+        if (existingCandidacy.rows.length === 0) {
+            return res.json(errorResponse('Nenhuma candidatura encontrada para este evento.'));
+        }
+
+        // Remover a candidatura
+        await pool.query('DELETE FROM candidaturas WHERE usuario_id = $1 AND evento_id = $2', [
+            usuarioId,
+            eventoId,
+        ]);
+
+        return res.json(successResponse({}, 'Candidatura cancelada com sucesso.'));
+    } catch (error) {
+        console.error('Erro ao cancelar candidatura:', error);
+        return res.status(500).json(errorResponse('Erro ao cancelar a candidatura.'));
     }
 });
 

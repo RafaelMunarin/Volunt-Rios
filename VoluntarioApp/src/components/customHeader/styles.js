@@ -9,8 +9,6 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 10,
         backgroundColor: '#004d40',
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
         paddingTop: 30,
     },
     leftContainer: {
@@ -26,17 +24,36 @@ export const styles = StyleSheet.create({
     usernameText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#fff',
-        marginRight: 10,
     },
     nameScreen: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#fff',
     },
-    logoutText: {
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Fundo translúcido para o modal
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalContent: {
+        padding: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+        width: '80%',
+    },
+    modalButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        marginVertical: 5,
+        backgroundColor: '#004d40',
+        borderRadius: 4,
+        width: '100%',
+        justifyContent: 'center',
+    },
+    modalButtonText: {
+        marginLeft: 10,
         fontSize: 16,
-        color: '#e0f7fa',
-        fontWeight: 'bold',
     },
 });

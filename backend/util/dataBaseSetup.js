@@ -1,4 +1,4 @@
-const pool = require('../db'); 
+const pool = require('../db');
 
 const dataBaseSetup = async () => {
     try {
@@ -33,6 +33,16 @@ const dataBaseSetup = async () => {
                 email_responsavel VARCHAR(255)
             );
         `)
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS candidaturas (
+                id SERIAL PRIMARY KEY,
+                usuario_id INT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+                evento_id INT NOT NULL REFERENCES eventos(id) ON DELETE CASCADE,
+                data_candidatura TIMESTAMP DEFAULT NOW(),
+                UNIQUE (usuario_id, evento_id)
+            );
+        `);
 
         console.log('Verificação e criação de tabelas concluída com sucesso.')
     } catch (err) {
